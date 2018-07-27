@@ -1,0 +1,65 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+  crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+  crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+  crossorigin="anonymous"></script>
+
+  <div class="container">
+    <div class="text-center">
+          <pagination-controls (pageChange)="p = $event">
+          </pagination-controls>
+        </div>
+    <hr>
+      <div class="row">
+          <!-- Team member -->
+          <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let country of data| paginate: { itemsPerPage: 4, currentPage: p }">
+              <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                  <div class="mainflip">
+                      <div class="frontside">
+                          <div class="card">
+                              <div class="card-body text-center">
+                                  <p><img class=" img-fluid" src="{{country.flag}}" alt="card image"></p>
+                                  <h4 class="card-title">{{country.name}}</h4>
+                                  <!-- <p class="card-text"> <strong>Region :</strong> {{country.region}}</p> -->
+                                  <p class="card-text"> <strong>Subregion :</strong> {{country.subregion}}</p>
+                                  <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="backside">
+                        <a [routerLink]="['/country',country.alpha3Code]" href="">
+                            
+                          <div class="card">
+                             <div class="card-body text-center">
+                                  <h4 class="card-title">{{country.name}}</h4>
+                                  <p class="card-text"> <strong>Region :</strong> {{country.region}}, <strong>Subregion :</strong> {{country.subregion}}</p>
+                                  <p class="card-text"> <strong>Capital :</strong> {{country.capital}}</p>
+                                  <p class="card-text" *ngIf="country.currencies.length > 0"> <strong>Currency :</strong> {{country.currencies[0].name}}</p>
+                                  <p class="card-text" *ngIf="country.timezones.length > 0"> <strong>Timezone :</strong> {{country.timezones[0]}}</p>
+                                 
+                                </div>
+                          </div>
+                        </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+    <!-- <div class="col-md-4" *ngFor="let country of data">
+      <div class="card">
+        <div class="card-img-wrap">
+          <img class="card-img-top" style="height:150px" src="{{country.flag}}" alt="Card image cap">
+        </div>
+        <div class="card-block">
+          <h4 class="card-title text-center">
+            <a href="">Americas</a>
+          </h4>
+          <p class="card-text"></p>
+          <a href="#" class="btn btn-primary"></a>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</div>

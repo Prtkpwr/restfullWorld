@@ -1,0 +1,41 @@
+<div class="container">
+  <div *ngIf="data" class="card text-center">
+    <div class="card-img-wrap">
+      <img class="card-img-top" src="{{data.flag}}" alt="Card image">
+    </div>
+    <div class="card-body">
+      <h4 class="card-title">{{data.name}}</h4>
+      <hr>
+      <div class="row">
+
+        <div class="col-md-6">
+
+          <p class="card-text">
+            <strong>Region :</strong> {{data.region}}</p>
+          <p class="card-text">
+            <strong>Subregion :</strong> {{data.subregion}}</p>
+          <p class="card-text">
+            <strong>Capital :</strong> {{data.capital}}</p>
+          <p class="card-text">
+            <strong>Area :</strong> {{data.area}}</p>
+        </div>
+        <div class="col-md-6">
+
+          <p class="card-text">
+            <strong>Timezones :</strong>
+            <span *ngFor="let timezone of data.timezones">{{timezone}} </span>
+          </p>
+          <p class="card-text">
+            <strong>Currency :</strong>
+            <span *ngFor="let currency of data.currencies"> {{currency.code}} </span>
+          </p>
+          <p class="card-text">
+            <strong>Languages :</strong>
+            <span *ngFor="let language of data.languages">{{language.name}} </span>
+          </p>
+          <p class="card-text">
+            <strong>Calling Code :</strong>
+            <span *ngFor="let code of data.callingCodes">{{code}} </span>
+          </p>
+        </div>
+      </div>
